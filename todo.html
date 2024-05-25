@@ -1,0 +1,115 @@
+<!DOCTYPE html> <!-- Tells the browser to run html code--> 
+<html lang="en-US"> <!-- Contains all HTML tags --> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="description">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFF66;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #head {
+            background-color: #fef9e7;
+            width: 400px;
+            border: 5px solid #990000;
+            padding: 40px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 8px #990000;
+        }
+        #tit {
+            color: #990000;
+            font-family: 'Arial Black', sans-serif;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #name {
+            width: calc(100% - 50px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #4b0082;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #addBtn {
+            font-size: 24px;
+            border: none;
+            background-color: #4b0082;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            margin-left: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #addBtn:hover {
+            background-color: #3a006b;
+        }
+        #list {
+            list-style: none;
+            padding: 0;
+        }
+        #list li {
+            background-color: #FFCC00;
+            border: 2px solid #4b0082;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+        #list li button {
+            font-size: 16px;
+            border: none;
+            background-color: #ff6347;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+        }
+        #list li button:hover {
+            background-color: #e5533b;
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <h1 id="tit">TO DO LIST <span>&#9989;</span></h1>
+        <h3 id="tit">Have a nice day!</h3>
+        <input id="name" type="text" placeholder="Enter a task">
+        <button id="addBtn" onclick="add()"><i class="fa fa-plus"></i></button>
+        <ul id="list" class="fa-ul">
+            <li id="lst">Workout 
+                <button onclick="del(event)" id="btn"><span>&#10006;</span></button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var word = document.getElementById("name");
+        var item = document.getElementById("list");
+        function add() {
+            if (word.value.trim() !== "") {
+                var birds = document.createElement("li");
+                birds.innerHTML = word.value + "<button onclick='del(event)' id='btn'><span>&#10006;</span></button>";
+                item.append(birds);
+                word.value = "";
+            }
+        }
+        function del(event) {
+            event.target.parentElement.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
